@@ -36,7 +36,7 @@ def k_means(samples, centroids, metric):
     return centroids
 
 
-class TestDistanceMetrics(unittest.TestCase):
+class TestKMeans(unittest.TestCase):
     def test_tutorial10_question1(self):
         samples = [(-1, 3), (1, 4), (0, 5), (4, -1), (3, 0), (5, 1)]
         centroids = [(-1, 3), (5, 1)]
