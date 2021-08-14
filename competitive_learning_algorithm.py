@@ -11,10 +11,10 @@ class CompetitiveLearningAlgorithm:
         self.centroids = [np.array(centroid) for centroid in centroids]
         self.selection_order = selection_order
         self.n = n
-        self.number_of_clusters = len(centroids)
 
     def index_of_nearest_cluster(self, sample):
-        return min(range(self.number_of_clusters), key=lambda i: euclidean_distance(self.centroids[i], sample))
+        number_of_clusters = len(self.centroids)
+        return min(range(number_of_clusters), key=lambda i: euclidean_distance(self.centroids[i], sample))
 
     def learn(self):
         for index in self.selection_order:
