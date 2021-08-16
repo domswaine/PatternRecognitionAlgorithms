@@ -33,3 +33,17 @@ def convolve(arr, kernel, *, padding=0, stride=1, dilation=1):
     arr = pad(np.array(arr), padding)
     kernel = dilate(kernel, dilation)
     return after_stride(correlate2d(arr, kernel, 'valid'), stride)
+
+
+def pooling(arr, pooling_region, stride=1, pooling_type=max):
+    out = np.zeros((
+        arr.shape[0] - pooling_region[0] + 1,
+        arr.shape[1] - pooling_region[1] + 1
+    ))
+    for ix, iy in np.ndindex(out.shape):
+        neighbours = []
+        for y_offset in range(pooling_region[0]):
+            for x_offset in range(pooling_region[1]):
+                neighbours.append(arr[iy + y_offset, ix + x_offset])
+        out[iy, ix] = pooling_type(neighbours)
+    return after_stride(out, stride)

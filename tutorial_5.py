@@ -4,7 +4,7 @@ from algorithms.activation_functions import leaky_rectified_linear_unit as lrelu
 from algorithms.activation_functions import tahn_activation_function as tanh
 from algorithms.activation_functions import heaviside_function
 from algorithms.batch_normalisation import batch_normalisation
-from algorithms.convolution import convolve
+from algorithms.convolution import convolve, pooling
 
 
 def question_4():
@@ -76,7 +76,44 @@ def question_6():
     print(convolve(x1, h1, padding=0, stride=1, dilation=2) + convolve(x2, h2, padding=0, stride=1, dilation=2))
 
 
-# if __name__ == "__main__":
+def question_7():
+    x1 = np.array([
+        [0.2, 1, 0],
+        [-1, 0, -0.1],
+        [0.1, 0, 0.1]
+    ])
+
+    x2 = np.array([
+        [1, 0.5, 0.2],
+        [-1, -0.5, -0.2],
+        [0.1, -0.1, 0]
+    ])
+
+    x3 = np.array([
+        [0.5, -0.5, -0.1],
+        [0, -0.4, 0],
+        [0.5, 0.5, 0.2]
+    ])
+
+    print(x1 + -1 * x2 + 0.5 * x3)
+
+
+def question_8():
+    x1 = np.array([
+        [0.2, 1, 0, 0.4],
+        [-1, 0, -0.1, -0.1],
+        [0.1, 0, -1, -0.5],
+        [0.4, -0.7, -0.5, 1]
+    ])
+    avg = lambda lst: sum(lst) / len(lst)
+    print(pooling(x1, (2, 2), stride=2, pooling_type=avg))
+    print(pooling(x1, (2, 2), stride=2, pooling_type=max))
+    print(pooling(x1, (3, 3), stride=1, pooling_type=max))
+
+
+if __name__ == "__main__":
     # question_4()
     # question_5()
     # question_6()
+    # question_7()
+    question_8()
