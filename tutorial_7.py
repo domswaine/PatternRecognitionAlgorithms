@@ -1,6 +1,7 @@
 import numpy as np
 from algorithms.karhunen_loeve_transform import KarhunenLoeveTransform
 from algorithms.ojas_learning_rule import OjasLearningRule
+from algorithms.fishers_method import fishers_method_cost
 
 
 def question_4():
@@ -42,7 +43,19 @@ def question_7():
     OjasLearningRule(samples, initial_weights)
 
 
+def question_8():
+    samples = [
+        (np.array([[1], [2]]), 1),
+        (np.array([[2], [1]]), 1),
+        (np.array([[3], [3]]), 1),
+        (np.array([[6], [5]]), 2),
+        (np.array([[7], [8]]), 2)
+    ]
+    fishers_method_cost(samples, np.array([[-1, 5]]))
+
+
 if __name__ == "__main__":
     # question_4()
     # question_6()
-    question_7()
+    # question_7()
+    question_8()
