@@ -1,5 +1,6 @@
 import numpy as np
 from algorithms.karhunen_loeve_transform import KarhunenLoeveTransform
+from algorithms.ojas_learning_rule import OjasLearningRule
 
 
 def question_4():
@@ -11,8 +12,37 @@ def question_4():
     ]
     proj = KarhunenLoeveTransform(samples)
     for sample in samples:
-        print(proj.project(sample))
+        print(proj.project(sample).transpose())
+
+
+def question_6():
+    samples = [
+        np.array([[0], [1]]),
+        np.array([[3], [5]]),
+        np.array([[5], [4]]),
+        np.array([[5], [6]]),
+        np.array([[8], [7]]),
+        np.array([[9], [7]])
+    ]
+    proj = KarhunenLoeveTransform(samples)
+    for sample in samples:
+        print(proj.project(sample).transpose())
+
+
+def question_7():
+    samples = [
+        np.array([[0], [1]]),
+        np.array([[3], [5]]),
+        np.array([[5], [4]]),
+        np.array([[5], [6]]),
+        np.array([[8], [7]]),
+        np.array([[9], [7]])
+    ]
+    initial_weights = np.array([[-1.0, 0.0]])
+    OjasLearningRule(samples, initial_weights)
 
 
 if __name__ == "__main__":
-    question_4()
+    # question_4()
+    # question_6()
+    question_7()
