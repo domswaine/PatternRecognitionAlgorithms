@@ -1,4 +1,4 @@
-from math import tanh
+from math import tanh, exp
 
 
 def heaviside_function(x, threshold=0, h0=0.5):
@@ -25,3 +25,11 @@ def parametric_rectified_linear_unit(x, a=0.1):
 
 def tahn_activation_function(x):
     return tanh(x)
+
+
+def symmetric_tangent_sigmoid_function(x):
+    return 2 / (1 + exp(-2 * x)) - 1
+
+
+def logarithmic_sigmoid_function(x):
+    return 1 / (1 + exp(-x))
