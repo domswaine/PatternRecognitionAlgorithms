@@ -12,9 +12,9 @@ class OjasLearningRule:
 
         for epoch in range(1, epochs + 1):
             print("Epoch %i" % epoch)
-            sigma_delta = np.zeros(self.weights.shape, dtype='float64')
 
             for i, x in enumerate(zero_mean_samples, 1):
+                sigma_delta = np.zeros(self.weights.shape, dtype='float64')
                 print("Sample %i" % i)
                 x_t = np.transpose(x)
                 print(" > x_t: ", x_t)
@@ -26,9 +26,9 @@ class OjasLearningRule:
                 print(" > ny(x_t - yw): ", delta)
                 sigma_delta += delta
 
-            self.weights += sigma_delta
-            print("Sigma delta: ", sigma_delta)
-            print("W: ", self.weights, "\n")
+                self.weights += sigma_delta
+                print("Sigma delta: ", sigma_delta)
+                print("W: ", self.weights, "\n")
 
     def project(self, sample):
         return np.matmul(self.weights, sample - self.mu)

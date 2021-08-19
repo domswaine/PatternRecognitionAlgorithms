@@ -20,7 +20,14 @@ class KarhunenLoeveTransform:
         covariance_matrix = covariance_matrix / number_of_samples
 
         E, V = np.linalg.eig(covariance_matrix)
-        indexes = (-E).argsort()[:dimensionality - 1]
+
+        V[:, 1] = V[:, 1] * (-1)
+        V[:, 2] = V[:, 2] * (-1)
+
+        print(V)
+        print("")
+
+        indexes = (-E).argsort()[:dimensionality - 2]
         self.v_hat_t = V[:, indexes].transpose()
 
     def project(self, sample):

@@ -26,11 +26,14 @@ def svm(support_vectors, support_vector_class):
     print("Weights: ", final_weight)
     print("Margin: ", 2/np.linalg.norm(final_weight))
 
+
 support_vectors = np.array([
-    [3.0, 6.9],
-    [7.4, 9.3],
-    [7.4, 5.7]
+    [23.0, 82.0, 46.0, 55.0],
+    [65.0, 88.0, 86.0, 115.0],
+    [98.0, 8.0, 24.0, 15.0],
+    [99.0, 61.0, 48.0, 80.0],
+    [11.0, 46.0, 29.0, 12.0]
 ])
-support_vector_class = np.array([1, -1, -1])
+support_vector_class = np.array([1, 1, 1, -1, -1])
 
 svm(support_vectors, support_vector_class)
